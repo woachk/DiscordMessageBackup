@@ -60,7 +60,7 @@ namespace DiscordBackup
                 Console.WriteLine("Failed to log in.");
                 return;
             }
-            Console.Write("Channel ID (has to be text channel): ");
+            Console.Write("Channel ID (has to be a text channel): ");
             string channelIdString = Console.ReadLine();
             ulong channelId = ulong.Parse(channelIdString);
             SocketTextChannel channel = (SocketTextChannel) socketClient.GetChannel(channelId);
@@ -68,7 +68,7 @@ namespace DiscordBackup
                 Console.WriteLine("Unable to access to channel.");
                 return;
             }
-            Console.WriteLine("Backing up channel: "+ channel.Name);
+            Console.WriteLine("Backing up channel: #"+ channel.Name);
             MessageContext dbContext = new MessageContext();
             IEnumerable<IMessage> messages = await channel.GetMessagesAsync(100).Flatten();
             IEnumerator<IMessage> messagesEnumerator = messages.GetEnumerator();
