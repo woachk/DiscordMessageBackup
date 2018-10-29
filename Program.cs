@@ -44,10 +44,9 @@ namespace DiscordBackup
 {
     class Program
     {
-        private DiscordSocketClient socketClient;
         public async Task MainAsync(string[] args) {
             Console.WriteLine("Discord Message Backup Tool\nCopyright (c) 2018 never_released\n\n");
-            socketClient = new DiscordSocketClient();
+            DiscordSocketClient socketClient = new DiscordSocketClient();
             if (args.Length != 0) {
                 Console.WriteLine("The number of arguments is incorrect.");
                 return;
