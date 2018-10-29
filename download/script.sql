@@ -1,0 +1,1 @@
+SELECT Url FROM Attachments;
