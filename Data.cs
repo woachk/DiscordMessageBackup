@@ -43,20 +43,24 @@ using System.ComponentModel.DataAnnotations;
 namespace DiscordBackup
 {
     public class Message {
+         [Key] public ulong Id {get; set;}
+         public string time_string {get; set;}
+         public string ChannelName {get; set;}
+         public string UserName {get; set;}
+         public string Content { get; set;}
          public bool IsTTS { get; set; }
          public bool IsPinned { get; set;}
-         public string Content { get; set;}
-         public string UserName {get; set;}
-         public string ChannelName {get; set;}
          public ulong ChannelId {get; set;}
          public ulong UserId {get; set;}
-         [Key] public ulong Id {get; set;}
+         public long time {get; set;}
          public Message() {
 
          }
          public Message(IMessage msg) {
              Id = msg.Id;
              IsTTS = msg.IsTTS;
+             time_string = msg.Timestamp.ToString();
+             time = msg.Timestamp.ToUnixTimeSeconds();
              IsPinned = msg.IsPinned;
              Content = msg.Content;
              UserName = msg.Author.Username;
